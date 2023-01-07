@@ -88,7 +88,5 @@ note_seq.play_sequence(gen_seq, synth=note_seq.fluidsynth)  # NoteSequenceの再
 
 """## MIDIファイルの保存とダウンロード"""
 
-from google.colab import files
 
-note_seq.sequence_proto_to_midi_file(gen_seq, "SatieArrange.mid")  #MIDI　データに変換し保存
-files.download("SatieArrange.mid")  # ダウンロード
+
