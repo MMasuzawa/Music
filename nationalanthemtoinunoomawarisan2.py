@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1wd2qTXhYWL4g-3QKFksrMS_D_WztVRkN
 """
 
-!apt-get update -qq && apt-get install -qq libfluidsynth1 fluid-soundfont-gm build-essential libasound2-dev libjack-dev
+#!apt-get update -qq && apt-get install -qq libfluidsynth1 fluid-soundfont-gm build-essential libasound2-dev libjack-dev
 !pip3 install -qU pyfluidsynth pretty_midi
 !pip3 install -qU magenta
 
