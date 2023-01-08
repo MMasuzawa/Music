@@ -7,16 +7,21 @@ Original file is located at
     https://colab.research.google.com/drive/1wd2qTXhYWL4g-3QKFksrMS_D_WztVRkN
 """
 
+#!apt-get update -qq && apt-get install -qq libfluidsynth1 fluid-soundfont-gm build-essential libasound2-dev libjack-dev
+#!apt autoremove
 !apt-get update -qq && apt-get install -qq libfluidsynth1 fluid-soundfont-gm build-essential libasound2-dev libjack-dev
-!pip install -qU pyfluidsynth pretty_midi
-!pip install -qU magenta
 
+!pip3 install -qU pyfluidsynth pretty_midi
+!pip3 install -qU magenta
 
-
-
+import numpy as np
+import pandas as pd
+#!pip install streamlit
+#!pip install protobuf==3.20.1
 
 !gsutil -q -m cp -R gs://download.magenta.tensorflow.org/models/music_vae/colab2/checkpoints/mel_2bar_big.ckpt.* /content/
 
+#%%writefile app.py
 from magenta.models.music_vae import configs
 from magenta.models.music_vae.trained_model import TrainedModel
 
@@ -26,6 +31,7 @@ music_vae = TrainedModel(
       batch_size=4,  # 一度に処理するデータ数
       checkpoint_dir_or_path="/content/mel_2bar_big.ckpt")
 
+#%%writefile app.py
 import note_seq
 
 generated = music_vae.sample(n=5,  # 生成数
@@ -125,3 +131,9 @@ interp_seq = note_seq.sequences_lib.concatenate_sequences(gen_seq)
 
 note_seq.plot_sequence(interp_seq)
 note_seq.play_sequence(interp_seq, synth=note_seq.fluidsynth)
+
+
+
+#!pip install protobuf==3.20.1
+
+#!streamlit run app.py & sleep 3 && npx localtunnel --port 8501
