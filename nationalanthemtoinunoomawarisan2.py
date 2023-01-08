@@ -8,8 +8,8 @@ Original file is located at
 """
 
 #!apt-get update -qq && apt-get install -qq libfluidsynth1 fluid-soundfont-gm build-essential libasound2-dev libjack-dev
-!pip3 install -qU pyfluidsynth pretty_midi
-!pip3 install -qU magenta
+#!pip3 install -qU pyfluidsynth pretty_midi
+#!pip3 install -qU magenta
 
 
 
